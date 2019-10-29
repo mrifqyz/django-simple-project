@@ -1,1 +1,1 @@
-web: gunicorn duarkantin.wsgi --log-file -
+web: gunicorn cinoytdd.wsgi --log-file -
