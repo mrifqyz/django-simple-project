@@ -47,7 +47,7 @@ class LandingTest(TestCase):
 class LandingTestOnSelenium(LiveServerTestCase):
 
     def setUp(self):
-        self.selenium = webdriver.Chrome()
+        self.selenium = webdriver.Chrome('./chromedriver')
         super(LandingTestOnSelenium, self).setUp()
 
     def tearDown(self):
