@@ -29,3 +29,4 @@ class LandingTest(TestCase):
         response = c.get("/")
         content = response.content.decode('utf8')
         self.assertIn(toBePosted['status'], content)
+        self.assertContains(response, toBePosted['status'])
