@@ -27,6 +27,6 @@ Deployment:
     - heroku run --app $HEROKU_APPNAME python manage.py migrate
   environment:
     name: production
-    url: $  
+    url: $HEROKU_APPHOST
   only:
     - master
