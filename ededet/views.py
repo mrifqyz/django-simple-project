@@ -8,9 +8,10 @@ def landing(request):
     if request.method == "POST":
         form = StatusForm(request.POST)
         
-        if form.is_valid() == True:
-            Status.objects.create(status=request.POST['status'])
-            redirect("/")
+        if form.is_valid():
+            if len(request.POST['status']) < 300:
+                Status.objects.create(status=request.POST['status'])
+                redirect("/")
 
     form = StatusForm()
     var = {

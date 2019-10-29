@@ -11,7 +11,7 @@
     <form method="POST">
         {% csrf_token %}
         {{form}}
-        <button type="submit">Submit</button>
+        <button type="submit" name="submit">Submit</button>
     </form>
     {% for i in status_data %}
         {{i.status}}
