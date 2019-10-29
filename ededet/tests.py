@@ -1,9 +1,10 @@
 from django.test import TestCase, Client, LiveServerTestCase
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from .models import Status
 import time
 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 # Create your tests here.
 
 
@@ -47,7 +48,13 @@ class LandingTest(TestCase):
 class LandingTestOnSelenium(LiveServerTestCase):
 
     def setUp(self):
-        self.selenium = webdriver.Chrome('./chromedriver')
+        chrome_options = Options()
+        chrome_options.add_argument('--dns-prefetch-disable')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('disable-gpu')
+        self.selenium = webdriver.Chrome(
+            './chromedriver', chrome_options=chrome_options)
         super(LandingTestOnSelenium, self).setUp()
 
     def tearDown(self):
