@@ -49,9 +49,9 @@ class LandingTestOnSelenium(LiveServerTestCase):
 
     def setUp(self):
         chrome_options = Options()
+        chrome_options.add_argument('--headless')
         chrome_options.add_argument('--dns-prefetch-disable')
         chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--headless')
         chrome_options.add_argument('disable-gpu')
         self.selenium = webdriver.Chrome(
             './chromedriver', chrome_options=chrome_options)
@@ -86,4 +86,9 @@ class LandingTestOnSelenium(LiveServerTestCase):
         time.sleep(3)
         
         self.assertNotIn("Lorem ipsum dolor sit amet, cinoy ganteng consectetur adipiscing elit. Cras libero velit, dapibus ac condimentum vitae, fermentum non risus. Ut interdum pellentesque mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean porttitor bacot kamu nak gilaaaa hahahahahhahahahahahahahaha", selenium.page_source)
+
+
+
+
+
 
