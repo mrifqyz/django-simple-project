@@ -9,10 +9,22 @@ from selenium.webdriver.common.keys import Keys
 
 
 class LandingTest(TestCase):
+    
+    def test_missing_url_return_404(self):
+        c = Client()
+        response = c.get("/hey")
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_landing_page_url(self):
+        c = Client()
+        response = c.get("/")
+
+        self.assertEqual(response.status_code, 200)
+
     def test_check_content(self):
         c = Client()
         response = c.get("/")
-        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "landing.html")
         self.assertContains(response, "Halo, apa kabar?")
         self.assertContains(response, "<form")
