@@ -19,5 +19,4 @@ def landing(request):
         'status_obj':Status.objects.all().count(),
         'form':form
     }
-    print(Status.objects.all().count())
     return render(request, 'landing.html', var)
