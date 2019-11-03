@@ -1,6 +1,7 @@
-from django.urls import path, include
-from .views import landing
+from django.urls import path, include, reverse, re_path
+from .views import *
 
 urlpatterns = [
-    path('', landing)
+    path('', landing, name='landing'),
+    re_path(r'^create_status', create_status, name='status')
 ]
