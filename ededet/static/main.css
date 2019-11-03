@@ -1,5 +1,6 @@
 body{
     font-family: 'PT Sans', sans-serif;
+    color: #1b1b1b;
     font-size: 16pt;
 }
 
@@ -9,10 +10,6 @@ body{
 
 .align-c{
     text-align: center;
-}
-
-.align-n{
-    text-align: left;
 }
 
 .form-style{
@@ -41,8 +38,13 @@ body{
     transition-duration: 2s;
 }
 
-.img14{
+.img16{
     width: 16pt;
+}
+
+.img24{
+    width: 24pt;
+    height: 24pt;
 }
 
 .disable-margin{
@@ -77,3 +79,21 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+#brand-logo{
+    width: 65px;
+}
+
+#foto{
+    border-radius: 50%;
+    width: 250px;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.text-24{
+    font-size: 24pt;
+}
+

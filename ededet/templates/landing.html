@@ -1,74 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'template.html' %}
 {% load static %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ryzn</title>
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-
-</head>
-
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light pl-4">
-        <a class="navbar-brand" href=".">ryzn</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-
-    <div class="main-content">
-        <div class="mb-5 mx-5 py-2 flex-center-col align-c">
-            <h1 class="text-big mb-4">Halo, apa kabar?</h1>
-            <div class="flex-left mb-4">
-                <div class="circle {% if status_obj > 0 %}green{% else %}red{% endif %} mr-2"></div>
-                <p style="margin: 0;">{% if status_obj > 0 %} {{latest.status}} {% else %}No status yet.{% endif %}</p>
-            </div>
-            <div class="form-container">
-                <form method="POST" action="{% url 'status' %}">
-                    {% csrf_token %}
-                    {{form}}
-                    <button class="btn btn-border ml-3" type="submit" name="submit">Kirim</button>
-                </form>
-            </div>
-        </div>
-        <br><br>
-        <div class="feeds-scroll my-5 flex-center-col">
-            <p class="disable-margin">Feeds</p>
-            <img src="{% static 'down.svg' %}" alt="" class="img14">
-        </div>
-
-        <div class="status-container mx-5 flex-center-col align-c">
-            {% if status_obj > 0 %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Waktu</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for i in status_data %}
-                        <tr>
-                            <th scope="row">{{i.id}}</th>
-                            <td>{{i.status}}</td>
-                            <td>Posted on {{i.date}} at {{i.time}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>No status submitted yet.</p>
-            {% endif %}
-        </div>
+{% block content %}
+<div class="mb-5 mx-5 py-2 flex-center-col align-c">
+    <h1 class="text-big mb-4">Halo, apa kabar?</h1>
+    <div class="flex-left mb-4">
+        <div class="circle {% if status_obj > 0 %}green{% else %}red{% endif %} mr-2"></div>
+        <p style="margin: 0;">{% if status_obj > 0 %} {{latest.status}} {% else %}No status yet.{% endif %}</p>
     </div>
-</body>
+    <div class="form-container">
+        <form method="POST" action="{% url 'status' %}">
+            {% csrf_token %}
+            {{form}}
+            <button class="btn btn-border ml-3" type="submit" name="submit">Kirim</button>
+        </form>
+    </div>
+</div>
+<br><br>
+<div class="feeds-scroll my-5 flex-center-col">
+    <p class="disable-margin">Feeds</p>
+    <img src="{% static 'down.svg' %}" alt="" class="img16">
+</div>
 
-</html>
+<div class="status-container mx-5 flex-center-col align-c">
+    {% if status_obj > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status</th>
+                <th scope="col">Waktu</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in status_data %}
+            <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.status}}</td>
+                <td>Posted on {{i.date}} at {{i.time}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No status submitted yet.</p>
+    {% endif %}
+</div>
+</div>
+
+{% endblock %}

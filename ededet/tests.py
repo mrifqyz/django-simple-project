@@ -29,6 +29,13 @@ class LandingTest(TestCase):
         self.assertContains(response, "Halo, apa kabar?")
         self.assertContains(response, "<form")
 
+    def test_about_url(self):
+        c = Client()
+        response = c.get("/about")
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "about.html")
+        self.assertContains(response, "Rifqy")
+
     def test_make_status(self):
         Status.objects.create(
             status='Coba-Coba'

@@ -11,6 +11,7 @@ def landing(request):
     else:
         obj = Status.objects.filter(id=i)[0]
     var = {
+        'page':'home',
         'status_data':Status.objects.all(),
         'status_obj':i,
         'latest':obj,
@@ -25,3 +26,6 @@ def create_status(request):
             if len(request.POST['status']) < 300:
                 Status.objects.create(status=request.POST['status'])
     return redirect(reverse('landing'))
+
+def about(request):
+    return render(request, 'about.html', {'page':'about'})
