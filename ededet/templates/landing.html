@@ -24,11 +24,11 @@
     </nav>
 
     <div class="main-content">
-        <div class="mb-5 mx-5 py-2 align-c">
+        <div class="mb-5 mx-5 py-2 flex-center-col align-c">
             <h1 class="text-big mb-4">Halo, apa kabar?</h1>
-            <div>
-                <div class="circle {% if status_obj > 0 %}green{% else %}red{% endif %}"></div>
-                <p>{% if status_obj > 0 %} {{latest.status}} {% else %}No status yet.{% endif %}</p>
+            <div class="flex-left mb-4">
+                <div class="circle {% if status_obj > 0 %}green{% else %}red{% endif %} mr-2"></div>
+                <p style="margin: 0;">{% if status_obj > 0 %} {{latest.status}} {% else %}No status yet.{% endif %}</p>
             </div>
             <div class="form-container">
                 <form method="POST" action="{% url 'status' %}">
@@ -39,12 +39,12 @@
             </div>
         </div>
         <br><br>
-        <div class="feeds-scroll my-5 align-c">
+        <div class="feeds-scroll my-5 flex-center-col">
             <p class="disable-margin">Feeds</p>
             <img src="{% static 'down.svg' %}" alt="" class="img14">
         </div>
 
-        <div class="status-container mx-5 align-c">
+        <div class="status-container mx-5 flex-center-col align-c">
             {% if status_obj > 0 %}
                 <table class="table">
                     <thead>

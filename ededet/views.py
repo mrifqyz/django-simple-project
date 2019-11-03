@@ -6,10 +6,14 @@ from .models import Status
 def landing(request):
     form = StatusForm()
     i = Status.objects.all().count()
+    if(i==0):
+        obj = "No status yet."
+    else:
+        obj = Status.objects.filter(id=i)[0]
     var = {
         'status_data':Status.objects.all(),
         'status_obj':i,
-        'latest':Status.objects.filter(id=i)[0],
+        'latest':obj,
         'form':form
     }
     return render(request, 'landing.html', var)
