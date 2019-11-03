@@ -12,7 +12,7 @@
             {% csrf_token %}
             {{form}}
             <button class="btn btn-border ml-3" type="submit" name="submit">Kirim</button>
-        </form>
+        </form> 
     </div>
 </div>
 <br><br>
@@ -21,7 +21,7 @@
     <img src="{% static 'down.svg' %}" alt="" class="img16">
 </div>
 
-<div class="status-container mx-5 flex-center-col align-c">
+<div class="status-container mx-5 flex-center-col">
     {% if status_obj > 0 %}
     <table class="table">
         <thead>
