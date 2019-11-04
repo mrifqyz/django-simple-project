@@ -109,7 +109,7 @@ class LandingTestOnSelenium(LiveServerTestCase):
         selenium.get('http://127.0.0.1:8000/')
 
         time.sleep(2)
-        hoho = selenium.find_element_by_id("togel")
+        hoho = selenium.find_element_by_css_selector(".switch")
         time.sleep(2)
         hoho.click()
         time.sleep(2)
