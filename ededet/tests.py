@@ -5,9 +5,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# Create your tests here.
 
 
 class LandingTest(TestCase):
@@ -69,9 +67,9 @@ class LandingTestOnSelenium(LiveServerTestCase):
 
     def setUp(self):
         chrome_options = Options()
-        chrome_options.add_argument('headless')
-        chrome_options.add_argument('dns-prefetch-disable')
-        chrome_options.add_argument('no-sandbox')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--dns-prefetch-disable')
+        chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('disable-gpu')
         self.selenium = webdriver.Chrome(
             './chromedriver', chrome_options=chrome_options)
@@ -109,10 +107,12 @@ class LandingTestOnSelenium(LiveServerTestCase):
     def test_dark_mode_light_mode(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/')
-        selenium.implicitly_wait(10)
-        hoho = selenium.find_element_by_css_selector(".switch")
-        selenium.implicitly_wait(10)
+
+        time.sleep(2)
+        hoho = selenium.find_element_by_class_name("switch")
+        time.sleep(2)
         hoho.click()
+        time.sleep(2)
 
         light = "rgba(248, 249, 250, 1)"
         dark = "rgba(27, 27, 27, 1)"
@@ -123,7 +123,9 @@ class LandingTestOnSelenium(LiveServerTestCase):
         h1 = selenium.find_element_by_tag_name("h1").value_of_css_property("color")
         self.assertEqual(light, h1)
 
-        selenium.implicitly_wait(10)
+        svg = selenium.find_element_by_tag_name("svg").value_of_css_property("fill")
+        self.assertEqual("rgb(249, 249, 249)", svg)
+
         hoho.click()
         time.sleep(2)
 
@@ -132,6 +134,9 @@ class LandingTestOnSelenium(LiveServerTestCase):
 
         h1 = selenium.find_element_by_tag_name("h1").value_of_css_property("color")
         self.assertEqual(dark, h1)
+
+        svg = selenium.find_element_by_tag_name("svg").value_of_css_property("fill")
+        self.assertEqual("rgb(27, 27, 27)", svg)
 
         time.sleep(2)
 
