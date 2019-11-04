@@ -5,7 +5,9 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
-# Create your tests here.
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LandingTest(TestCase):
@@ -107,10 +109,8 @@ class LandingTestOnSelenium(LiveServerTestCase):
     def test_dark_mode_light_mode(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/')
-
-        time.sleep(2)
+        bum = WebDriverWait(selenium, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".switch")))
         hoho = selenium.find_element_by_css_selector(".switch")
-        time.sleep(2)
         hoho.click()
         time.sleep(2)
 
