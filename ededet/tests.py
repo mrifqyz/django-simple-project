@@ -5,6 +5,9 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 # Create your tests here.
 
 
@@ -108,8 +111,7 @@ class LandingTestOnSelenium(LiveServerTestCase):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/')
 
-        time.sleep(2)
-        hoho = selenium.find_element_by_class_name("switch")
+        hoho = WebDriverWait(selenium, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".switch")))
         time.sleep(2)
         hoho.click()
         time.sleep(2)
