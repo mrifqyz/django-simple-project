@@ -126,6 +126,7 @@ body {
 }
 
 .switch {
+    cursor: pointer;
     position: relative;
     display: inline-block;
     width: 60px;
