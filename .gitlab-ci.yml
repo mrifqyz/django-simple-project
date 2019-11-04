@@ -22,7 +22,7 @@ UnitTest:
 
   when: on_success
   script:
-    - coverage run manage.py test
+    - coverage run --include='ededet/*' manage.py test
     - coverage report -m
 
 Deployment:
