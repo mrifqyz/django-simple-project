@@ -107,42 +107,43 @@ class LandingTestOnSelenium(LiveServerTestCase):
         
         self.assertNotIn("Lorem ipsum dolor sit amet, cinoy ganteng consectetur adipiscing elit. Cras libero velit, dapibus ac condimentum vitae, fermentum non risus. Ut interdum pellentesque mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean porttitor bacot kamu nak gilaaaa hahahahahhahahahahahahahaha", selenium.page_source)
 
-    #ERROR GATAU KENAPA DI GITLAB TAPI DI LOCAL BERHASIL
-    
-    # def test_dark_mode_light_mode(self):
-    #     selenium = self.selenium
-    #     selenium.get('http://127.0.0.1:8000/')
+    # ERROR GATAU KENAPA DI GITLAB TAPI DI LOCAL BERHASIL
+    # saya menyerah segala cara sudah saya lakukan tapi tidak ditemukan solusinya
 
-    #     hoho = WebDriverWait(selenium, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".switch")))
-    #     time.sleep(2)
-    #     hoho.click()
-    #     time.sleep(2)
+    def test_dark_mode_light_mode(self):
+        selenium = self.selenium
+        selenium.get(self.live_server_url + '/')
 
-    #     light = "rgba(248, 249, 250, 1)"
-    #     dark = "rgba(27, 27, 27, 1)"
+        hoho = WebDriverWait(selenium, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".switch")))
+        time.sleep(2)
+        hoho.click()
+        time.sleep(2)
 
-    #     bg = selenium.find_element_by_tag_name("body").value_of_css_property("background-color")
-    #     self.assertEqual(bg,'rgba(52, 58, 64, 1)')
+        light = "rgba(248, 249, 250, 1)"
+        dark = "rgba(27, 27, 27, 1)"
 
-    #     h1 = selenium.find_element_by_tag_name("h1").value_of_css_property("color")
-    #     self.assertEqual(light, h1)
+        bg = selenium.find_element_by_tag_name("body").value_of_css_property("background-color")
+        self.assertEqual(bg,'rgba(52, 58, 64, 1)')
 
-    #     svg = selenium.find_element_by_tag_name("svg").value_of_css_property("fill")
-    #     self.assertEqual("rgb(249, 249, 249)", svg)
+        h1 = selenium.find_element_by_tag_name("h1").value_of_css_property("color")
+        self.assertEqual(light, h1)
 
-    #     hoho.click()
-    #     time.sleep(2)
+        svg = selenium.find_element_by_tag_name("svg").value_of_css_property("fill")
+        self.assertEqual("rgb(249, 249, 249)", svg)
 
-    #     bg = selenium.find_element_by_tag_name("body").value_of_css_property("background-color")
-    #     self.assertEqual(bg, light)
+        hoho.click()
+        time.sleep(2)
 
-    #     h1 = selenium.find_element_by_tag_name("h1").value_of_css_property("color")
-    #     self.assertEqual(dark, h1)
+        bg = selenium.find_element_by_tag_name("body").value_of_css_property("background-color")
+        self.assertEqual(bg, light)
 
-    #     svg = selenium.find_element_by_tag_name("svg").value_of_css_property("fill")
-    #     self.assertEqual("rgb(27, 27, 27)", svg)
+        h1 = selenium.find_element_by_tag_name("h1").value_of_css_property("color")
+        self.assertEqual(dark, h1)
 
-    #     time.sleep(2)
+        svg = selenium.find_element_by_tag_name("svg").value_of_css_property("fill")
+        self.assertEqual("rgb(27, 27, 27)", svg)
+
+        time.sleep(2)
 
 
 

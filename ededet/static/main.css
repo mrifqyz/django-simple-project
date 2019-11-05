@@ -90,6 +90,10 @@ body {
     fill: #f9f9f9 !important;
 }
 
+.bg-grey{
+    background-color: #ccc;
+}
+
 .flex-left {
     display: flex;
     justify-content: left;
@@ -101,6 +105,13 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -187,10 +198,19 @@ input:checked+.slider:before {
 
 .accordion {
     cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+    outline: none;
     transition: 0.4s;
+    margin-bottom: 1vw;
 }
 
 .panel {
-    display: none;
+    padding: 0 18px;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }

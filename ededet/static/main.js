@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('input[type=checkbox]').change(function(){
         var changeableElement = ["a", "h1", "p", "td", "th"]
         if ($(this).is(':checked')) {
@@ -22,5 +23,19 @@ $(document).ready(function () {
         }
     });
 
-    
+    $('.accordion').each(function () {
+        $(this).click(function(){
+            var $this = $(this);
+            var maxHeight = $this.next().css('max-height');
+            console.log("yuhu, max-heightnya itu " + maxHeight);
+            if($this.next().css('max-height')=='0px'){
+                var nextHeight = $this.next().prop('scrollHeight') + 'px';
+                $this.next().css('max-height', nextHeight);
+                console.log('executed if');
+            }else{
+                $this.next().css('max-height', '');
+                console.log('executed else');
+            }
+        });
+      });
 });
