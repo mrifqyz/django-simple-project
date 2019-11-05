@@ -114,7 +114,7 @@ class LandingTestOnSelenium(LiveServerTestCase):
         selenium = self.selenium
         selenium.get(self.live_server_url + '/')
 
-        hoho = WebDriverWait(selenium, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".switch")))
+        hoho = selenium.find_element_by_css_selector(".switch")
         time.sleep(2)
         hoho.click()
         time.sleep(2)
