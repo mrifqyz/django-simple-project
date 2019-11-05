@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $('input[type=checkbox]').change(function(){
-        var changeableElement = ["a", "h1", "p", "td", "th"]
+        var changeableElement = ["a", "h1", "p", "td", "th", 'li']
         if ($(this).is(':checked')) {
             for(i=0;i<changeableElement.length;i++){
                 $(changeableElement[i]).addClass("text-light");
@@ -11,6 +11,9 @@ $(document).ready(function () {
             $('.form-style').addClass("border-white");
             $('.icon16').addClass("fill-white");
             $('.icon24').addClass("fill-white");
+            $('.accordion').removeClass('bg-dark').addClass("bg-light");
+            $('.ac-i').removeClass('text-light').addClass('text-dark');
+            $('.ac-s').removeClass('fill-white');
         }else{
             for(i=0;i<changeableElement.length;i++){
                 $(changeableElement[i]).removeClass("text-light");
@@ -20,6 +23,9 @@ $(document).ready(function () {
             $('.form-style').removeClass("border-white");
             $('.icon16').removeClass("fill-white");
             $('.icon24').removeClass("fill-white");
+            $('.accordion').removeClass("bg-light").addClass('bg-dark');
+            $('.ac-i').removeClass('text-dark').addClass('text-light');
+            $('.ac-s').addClass('fill-white');
         }
     });
 
