@@ -208,6 +208,10 @@ input:checked+.slider:before {
     margin-bottom: 1vw;
 }
 
+.none{
+    display: none;
+}
+
 .panel {
     padding: 0 18px;
     max-height: 0;

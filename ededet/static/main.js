@@ -1,3 +1,12 @@
+$(document).on({
+    ajaxStart: function() {
+        $('.none').css('display', 'block');
+      },
+      ajaxStop: function(){
+        $('.none').css('display', 'none');
+      }
+});
+
 $(document).ready(function () {
 
     $('input[type=checkbox]').change(function(){
