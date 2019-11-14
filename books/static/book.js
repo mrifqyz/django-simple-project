@@ -11,8 +11,7 @@ $(document).ready(function () {
 
 
     $('.form-inline').submit(function(event){
-        $(".btn-search").click(function(){
-            let searchItem = $(this).prev().val();
+            let searchItem = $('.btn-search').prev().val();
             let urlItem = "https://www.googleapis.com/books/v1/volumes?q="+searchItem;
   
             $.ajax({
@@ -21,8 +20,8 @@ $(document).ready(function () {
                 url:urlItem,
                 dataType:'json',
                 success:function(searchRes){
-                    $('.status-container').removeClass('none');
                     $('.status-container').next().addClass('none');
+                    $('.status-container').removeClass('none');
 
                   let bookShelf = searchRes.items;
 
@@ -64,11 +63,10 @@ $(document).ready(function () {
                 },
                 error:function(){
                     $('.status-container').next().addClass('none');
-                    $('.status-container').after($('<p>').text("Terjadi kesalahan. Mohon maaf coba lagi"));
+                    alert("Mohon maaf terjadi kesalahan. Coba ulangi lagi ya!");
                 },
                 type: 'GET',
             })    
-        });
         event.preventDefault();
     })
 

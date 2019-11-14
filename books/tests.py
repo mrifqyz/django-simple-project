@@ -43,8 +43,6 @@ class BookFunctionalTest(LiveServerTestCase):
         btnSearch = selenium.find_element_by_css_selector(".btn-search")
         btnSearch.click()
 
-        btnSearch.click()   
-
         time.sleep(2)
         self.assertIn('The Master Algorithm', selenium.page_source)
         time.sleep(2)
