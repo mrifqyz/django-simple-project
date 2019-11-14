@@ -4,5 +4,5 @@ from .views import *
 urlpatterns = [
     path('', landing, name='landing'),
     re_path(r'^create_status', create_status, name='status'),
-    path("about", about)
+    path("about", about),
 ]

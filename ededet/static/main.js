@@ -47,7 +47,7 @@ $(document).ready(function () {
                 var nextHeight = $this.next().prop('scrollHeight') + 'px';
                 $this.next().css('max-height', nextHeight);
                 console.log('executed if');
-            }else{
+            }else{  
                 $this.next().css('max-height', '');
                 console.log('executed else');
             }

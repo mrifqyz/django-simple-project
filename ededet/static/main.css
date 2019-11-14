@@ -15,6 +15,10 @@ body {
     text-align: center;
 }
 
+.align-l{
+    text-align: left;
+}
+
 .form-style {
     width: 35vw;
     padding: 8pt;
@@ -136,6 +140,10 @@ body {
     font-size: 12pt;
 }
 
+.text-36{
+    font-size: 36pt;
+}
+
 .switch {
     cursor: pointer;
     position: relative;
@@ -218,3 +226,4 @@ input:checked+.slider:before {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
