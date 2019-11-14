@@ -15,9 +15,6 @@
 </head>
 
 <body class="bg-light">
-    <div class="spinner-grow text-dark none" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
   <nav class="navbar navbar-expand-lg navbar-light sticky-top px-5">
     <a class="navbar-brand" href="/">
       <img src="{% static 'logo.png' %}" alt="" id="brand-logo">
@@ -35,7 +32,7 @@
           <a class="nav-link" href="/about">About</a>
         </li>
         <li class="nav-item {% if page == "book" %} active {% endif %} px-2">
-            <a class="nav-link" href="/book">Book</a>
+            <a class="nav-link" href="/books">Book</a>
           </li>
       </ul>
         <div class="p-2 mt-2 flex-left ml-auto">
@@ -59,6 +56,7 @@
   crossorigin="anonymous"></script>
 
   <script src="{% static 'main.js' %}"></script>
+  <script src="{% static 'book.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
   </script>

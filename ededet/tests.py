@@ -40,12 +40,6 @@ class LandingTest(TestCase):
         self.assertTemplateUsed(response, "about.html")
         self.assertContains(response, "Rifqy")
 
-    def test_book_url(self):
-        c = Client()
-        response = c.get("/book")
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "book.html")
-
     def test_make_status(self):
         Status.objects.create(
             status='Coba-Coba'
@@ -153,20 +147,7 @@ class LandingTestOnSelenium(LiveServerTestCase):
 
     #     time.sleep(2)
 
-    def test_if_search_clicked_show_content(self):
-        selenium = self.selenium
-        selenium.get('http://127.0.0.1:8000/book')
 
-        searchbox = selenium.find_element_by_class_name("searchbox")
-        searchbox.send_keys("Algorithm")
-
-        time.sleep(2)
-        
-        btnSearch = selenium.find_element_by_css_selector(".btn-search")
-
-        time.sleep(2)
-        self.assertIn('The Master Algorithm', selenium.page_source)
-        time.sleep(2)
 
 
 

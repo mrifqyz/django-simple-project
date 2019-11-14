@@ -227,3 +227,14 @@ input:checked+.slider:before {
     transition: max-height 0.2s ease-out;
 }
 
+.searchbox{
+    width: 50vw!important;
+}
+
+.vr{
+    border-left: 2px solid #1b1b1b;
+    height: 75px;
+}
+.vr-white{
+    border-color: #f9f9f9;
+}

@@ -1,0 +1,43 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+<div class="mb-5 mx-5 py-2 flex-center-col align-c">
+    <h1 class="text-36 mb-3">Cari Buku</h1>
+    <form class="form-inline mb-2">
+        <input class="form-control mr-sm-2 searchbox mr-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 btn-search" type="submit">Search</button>
+    </form>
+    <div class="spinner-grow text-dark none" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+</div>
+
+    <div class="result align-l mx-5">
+        <div id="res-header" class="flex-left mb-4">
+            <div class="vr mr-3"></div>
+            <div class="text-container">
+                <h1 class="text-24 hasil">Hasil Pencarian</h1>
+                <p class="text-12">Berikut hasil pencarian berdasarkan kata kunci kamu.</p>
+            </div>
+        </div>
+        <div class="status-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Judul</th>
+                        <th scope="col">Penulis</th>
+                        <th scope="col">Jumlah Halaman</th>
+                        <th scope="col">Terbitan</th>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Sampul</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

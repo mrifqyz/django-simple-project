@@ -1,12 +1,3 @@
-$(document).on({
-    ajaxStart: function() {
-        $('.none').css('display', 'block');
-      },
-      ajaxStop: function(){
-        $('.none').css('display', 'none');
-      }
-});
-
 $(document).ready(function () {
 
     $('input[type=checkbox]').change(function(){
@@ -23,6 +14,7 @@ $(document).ready(function () {
             $('.accordion').removeClass('bg-dark').addClass("bg-light");
             $('.ac-i').removeClass('text-light').addClass('text-dark');
             $('.ac-s').removeClass('fill-white');
+            $('.vr').addClass("vr-white");
         }else{
             for(i=0;i<changeableElement.length;i++){
                 $(changeableElement[i]).removeClass("text-light");
@@ -35,6 +27,7 @@ $(document).ready(function () {
             $('.accordion').removeClass("bg-light").addClass('bg-dark');
             $('.ac-i').removeClass('text-dark').addClass('text-light');
             $('.ac-s').addClass('fill-white');
+            $('.vr').removeClass("vr-white");
         }
     });
 
