@@ -7,12 +7,22 @@ $(document).on({
       }
 });
 
+function checkAvability(){
+
+}
+
 $(document).ready(function () {
-
-
     $('.form-inline').submit(function(event){
-            let searchItem = $('.btn-search').prev().val();
-            let urlItem = "https://www.googleapis.com/books/v1/volumes?q="+searchItem;
+        let count = $(".numbox").val();
+        let searchItem = $('.btn-search').prev().prev().val();
+        let urlItem = "https://www.googleapis.com/books/v1/volumes?q="+searchItem;
+        if(count == ""){
+            count = 10;
+        }else{
+            urlItem = "https://www.googleapis.com/books/v1/volumes?q="+searchItem+"&maxResults="+count;
+        }
+            
+                    
   
             $.ajax({
                 async: true,
@@ -22,18 +32,18 @@ $(document).ready(function () {
                 success:function(searchRes){
                     $('.status-container').next().addClass('none');
                     $('.status-container').removeClass('none');
-
                   let bookShelf = searchRes.items;
 
                   $('tbody').empty();
-                  for(i = 0; i<10;i++){
+                  
+                  for(i = 0; i<count;i++){
                       if(bookShelf[i]==undefined)
                         continue;
                         else{
                             let book = bookShelf[i].volumeInfo;
                             var toBeAppendNum = $('<td>').text(i+1);
                             var toBeAppendName = $('<td>').text(book.title);
-
+                            console.log(book.publisher);
                             if('publisher' in book == null) var toBeAppendPub = $('<td>').text('-');
                             else var toBeAppendPub = $('<td>').text(book.publisher);
 

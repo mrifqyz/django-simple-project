@@ -238,3 +238,17 @@ input:checked+.slider:before {
 .vr-white{
     border-color: #f9f9f9;
 }
+
+.numbox{
+    width:65px!important;
+}
+
+.append{
+    display: flex;
+    margin-left: -2px!important
+}
+
+#custom1{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

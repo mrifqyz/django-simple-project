@@ -4,7 +4,10 @@
 <div class="mb-5 mx-5 py-2 flex-center-col align-c">
     <h1 class="text-36 mb-3">Cari Buku</h1>
     <form class="form-inline mb-2">
-        <input class="form-control mr-sm-2 searchbox mr-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control searchbox " type="search" placeholder="Search" aria-label="Search">
+        <div class="append flex">
+            <input class="form-control mr-sm-2 mr-2 numbox" min="1" max="40" placeholder="10" id="custom1" type="number">
+        </div>
         <button class="btn btn-outline-success my-2 my-sm-0 btn-search" type="submit">Search</button>
     </form>
     <div class="spinner-grow text-dark none" role="status">
