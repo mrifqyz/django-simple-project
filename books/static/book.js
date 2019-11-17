@@ -1,82 +1,80 @@
 $(document).on({
-    ajaxStart: function() {
+    ajaxStart: function () {
         $('.none').css('display', 'block');
-      },
-      ajaxStop: function(){
+    },
+    ajaxStop: function () {
         $('.none').css('display', 'none');
-      }
+    }
 });
 
-function checkAvability(){
-
+function countChanger(num) {
+    if (num == "") return 10;
+    else return num;
 }
 
 $(document).ready(function () {
-    $('.form-inline').submit(function(event){
+    $('.form-inline').submit(function (event) {
         let count = $(".numbox").val();
+        count = countChanger(count);
+
         let searchItem = $('.btn-search').prev().prev().val();
-        let urlItem = "https://www.googleapis.com/books/v1/volumes?q="+searchItem;
-        if(count == ""){
-            count = 10;
-        }else{
-            urlItem = "https://www.googleapis.com/books/v1/volumes?q="+searchItem+"&maxResults="+count;
-        }
-            
-                    
-  
-            $.ajax({
-                async: true,
-                type:'GET',
-                url:urlItem,
-                dataType:'json',
-                success:function(searchRes){
-                    $('.status-container').next().addClass('none');
-                    $('.status-container').removeClass('none');
-                  let bookShelf = searchRes.items;
+        let urlItem = "https://www.googleapis.com/books/v1/volumes?q=" + searchItem + "&maxResults=" + count;
 
-                  $('tbody').empty();
-                  
-                  for(i = 0; i<count;i++){
-                      if(bookShelf[i]==undefined)
-                        continue;
-                        else{
-                            let book = bookShelf[i].volumeInfo;
-                            var toBeAppendNum = $('<td>').text(i+1);
-                            var toBeAppendName = $('<td>').text(book.title);
-                            console.log(book.publisher);
-                            if('publisher' in book == null) var toBeAppendPub = $('<td>').text('-');
-                            else var toBeAppendPub = $('<td>').text(book.publisher);
+        $.ajax({
+            async: true,
+            type: 'GET',
+            url: urlItem,
+            dataType: 'json',
+            success: function (searchRes) {
+                $('.status-container').next().addClass('none');
+                $('.status-container').removeClass('none');
+                let bookShelf = searchRes.items;
 
-                            var toBeAppendPub = $('<td>').text(book.publisher);
-                            var toBeAppendCount = $('<td>').text(book.pageCount);
-      
-                            if('authors'in book == false) var toBeAppendAuth =  $('<td>').text("-");
-                            else var toBeAppendAuth = $('<td>').text(book.authors[0]);
-      
-                            var toBeAppendISBN = $('<td>').text(book.categories);
+                $('tbody').empty();
 
-                            if('imageLinks' in book == false)
-                                var toBeImage = $('<td>').text("-");
-                            else{
-                                if('smallThumbnail' in book.imageLinks == false) 
-                                var toBeImage = $('<td>').append($('<img>').attr({'src':book.imageLinks.thumbnail}));
-                                else
-                                var toBeImage = $('<td>').append($('<img>').attr({'src':book.imageLinks.smallThumbnail}));
-                            }
-      
-                            var tr = $('<tr>').append(toBeAppendNum, toBeAppendName, toBeAppendAuth,
-                              toBeAppendCount, toBeAppendPub, toBeAppendISBN, toBeImage);
-      
-                          $('tbody').append(tr);
-                        }
-                  }
-                },
-                error:function(){
-                    $('.status-container').next().addClass('none');
-                    alert("Mohon maaf terjadi kesalahan. Coba ulangi lagi ya!");
-                },
-                type: 'GET',
-            })    
+                for (i = 0; i < count; i++) {
+                    let book = bookShelf[i].volumeInfo;
+                    var num = $('<td>').text(i + 1);
+                    var name = $('<td>').text(book.title);
+
+                    if ('publisher' in book == false) var publisher = $('<td>').text('-');
+                    else var publisher = $('<td>').text(book.publisher);
+
+                    if ('pageCount' in book == false) var pageCount = $('<td>').text("-");
+                    else var pageCount = $('<td>').text(book.pageCount);
+
+                    if ('authors' in book == false) var authors = $('<td>').text("-");
+                    else var authors = $('<td>').text(book.authors);
+
+                    if ('categories' in book == false) var categories = $('<td>').text("-");
+                    else var categories = $('<td>').text(book.categories);
+
+                    if ('imageLinks' in book == false)
+                        var img = $('<td>').text("-");
+                    else {
+                        if ('smallThumbnail' in book.imageLinks == false)
+                            var img = $('<td>').append($('<img>').attr({
+                                'src': book.imageLinks.thumbnail
+                            }));
+                        else
+                            var img = $('<td>').append($('<img>').attr({
+                                'src': book.imageLinks.smallThumbnail
+                            }));
+                    }
+
+                    var tr = $('<tr>').append(num, name, authors,
+                        pageCount, publisher, categories, img);
+
+                    $('tbody').append(tr);
+
+                }
+            },
+            error: function () {
+                $('.status-container').next().addClass('none');
+                alert("Mohon maaf terjadi kesalahan. Coba ulangi lagi ya!");
+            },
+            type: 'GET',
+        })
         event.preventDefault();
     })
 
