@@ -52,7 +52,7 @@ $(document).ready(function () {
                     if ('imageLinks' in book == false)
                         var img = $('<td>').text("-");
                     else {
-                        if ('smallThumbnail' in book.imageLinks == false)
+                        if ('smallThumbnail' in book.imageLinks == false    )
                             var img = $('<td>').append($('<img>').attr({
                                 'src': book.imageLinks.thumbnail
                             }));

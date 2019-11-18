@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, render, reverse
+from django.http import JsonResponse
 from .forms import StatusForm
 from .models import Status
+import json
+import requests
 
 # Create your views here
 def landing(request):
@@ -29,3 +32,7 @@ def create_status(request):
 
 def about(request):
     return render(request, 'about.html', {'page':'about'})
+
+def getStatus(request):
+    data = list(Status.objects.all().values())
+    return JsonResponse(data, safe=False)
