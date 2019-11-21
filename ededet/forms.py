@@ -6,13 +6,3 @@ class StatusForm(forms.Form):
         'placeholder': 'Jawaban kamu...'
     }), label='',)
 
-class UserForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={
-        'class':'form-style',
-        'placeholder': 'Username'
-    }), label='',)
-
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class':'form-style',
-        'placeholder': 'Password'
-    }))

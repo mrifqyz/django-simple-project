@@ -40,7 +40,12 @@
             <input type='checkbox' id="togel">
             <span class="slider round"></span>
           </label>
-          <p class="mb-2 text-12">Dark Mode</p>
+          <p class="mb-2 text-12 mr-3">Dark Mode</p>
+          {% if user.is_authenticated %}          
+          <a href="/logout" class="btn btn-primary py-2 px-4">Sign out</a>
+          {% else %}
+          <a href="/login" class="btn btn-primary py-2 px-4">Sign in</a>
+          {% endif %}
         </div>
     </div>
   </nav>

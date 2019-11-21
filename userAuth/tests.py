@@ -19,10 +19,16 @@ class LoginTest(TestCase):
         response = c.get('/login')
         self.assertEqual(response.status_code, 200)
 
-    def test_login_content(self):
+    def test_url_register(self):
+        c = Client()
+        response = c.get('/register')
+        self.assertEqual(response.status_code, 200)
+
+    def test_check_content(self):
         c = Client()
         response = c.get('/login')
         self.assertTemplateUsed(response, 'login.html')
+        self.assertTemplateUsed(response, 'register.html')
         self.assertIn('login', response)
 
     def test_user_login(self):

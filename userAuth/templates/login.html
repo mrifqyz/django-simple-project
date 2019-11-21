@@ -1,0 +1,23 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+<div class="container section-container flex-center-col p-5">
+    <h1 class="text-24 bold ">Log in</h1>
+    <form method="post" class="flex-center-col" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="form-container mt-2">
+            <label for="user" class="text-12">Username:</label>
+            {{form.username}}
+        </div>
+        <div class="form-container mt-2">
+            <label for="pswd" class="text-12">Password:</label>
+            {{form.password}}
+        </div>
+        <button class="btn btn-primary my-4 py-2 px-5">Login</button>
+    </form>
+    <div class="flex-center-col ">
+        <p class="text-12 m-0">Belum terdaftar?</p>
+        <a href="/register" class="text-12">Register</a>
+    </div>
+</div>
+{% endblock %}

@@ -8,7 +8,7 @@ body {
 }
 
 .text-big {
-    font-size: 60pt;
+    font-size: 48pt;
 }
 
 .align-c {
@@ -251,4 +251,16 @@ input:checked+.slider:before {
 #custom1{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.section-container{
+    width: 50vw;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 5px solid #e6e6e6;
+    /* padding: 5vw; */
+}
+
+.width-50vw{
+    width: 40vw;
 }
