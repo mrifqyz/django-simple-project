@@ -24,11 +24,14 @@ def loginUser(request):
         form = UserForm(request.POST)
         username = request.POST['username']
         password = request.POST['password']
-        if form.is_valid():
-            user = authenticate(request, username=username, password=password)
-            request.session.set_expiry(300)
+        user = authenticate(request, username=username, password=password)
+
+        if(user is not None ):
             login(request, user);   
+            request.session.set_expiry(300)
             return redirect('/')
+        else:
+            return redirect('/login')
 
     else:
         form = UserForm()
