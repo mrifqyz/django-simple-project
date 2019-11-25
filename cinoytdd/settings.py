@@ -110,10 +110,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# - client id
+# - client secret key
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GoogleOAuth2',
 ]
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '30430194717-q0ko750ee1h7h87lk2evhh5t59d4eilv.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'R9G3tVNT1NI2ygXPypSd8xg-'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+LOGIN_URL = '/auth/login/google-oauth2/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
